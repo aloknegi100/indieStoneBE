@@ -3,7 +3,6 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken');
 
 exports.login = async function(req,res){    
-    console.log("login ",req.body)
 
     try {
         const email = req.body.email;
@@ -38,7 +37,6 @@ exports.register = async function(req,res){
     try{
 
     
-    console.log("register ",req.body)
 
     const email = req.body.newEmail;
     const password = req.body.newpsd;
@@ -54,7 +52,6 @@ exports.register = async function(req,res){
     }
 
     const hashpsd = await bcrypt.hash(password,10)
-    console.log("hashed password ",hashpsd)
 
     const newUser = new User({email,password:hashpsd})
     await newUser.save()
