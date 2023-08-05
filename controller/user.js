@@ -1,6 +1,7 @@
 const User = require("../models/user");
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken');
+const ProductSchema = require('../models/product.js')
 
 exports.login = async function(req,res){    
 
@@ -70,6 +71,38 @@ exports.register = async function(req,res){
         message:"Server Error"
     })
 }
+
+
+}
+
+exports.saveData = async function(req,res){
+
+
+
+  console.log("saving data ")
+  try{
+
+    
+     const product = await new ProductSchema(req.body)
+     await product.save()
+
+     res.json({
+      success:true,
+      message:"Added"
+     })
+
+  }catch(e){
+    res.json({
+      success:false,
+      error:e?.message
+    })
+  }
+
+  
+
+
+
+
 
 
 }

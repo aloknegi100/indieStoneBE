@@ -4,9 +4,9 @@ const ProductSchema = new mongoose.Schema({
     name:String,
     image:[String],
     price:String,
-    type:String,
-    tags:[String],
+    specification:Object,
     description:String,
+    information:String
     
 },{timestamps:true})
 
